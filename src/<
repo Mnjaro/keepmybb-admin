@@ -1,0 +1,34 @@
+import React from "react";
+import Table from "react-bootstrap/Table";
+import { Parent, Pro } from "../../views/Users/types";
+
+interface UsersTableTypes {
+  tableHeaders: string[];
+  tableBody: Array<Pro | Parent>;
+}
+
+const UsersTable: React.FC<UsersTableTypes> = ({ tableHeaders, tableBody }) => {
+  return (
+    <Table responsive>
+      <thead>
+        <tr>
+          <th>#</th>
+          {tableHeaders.map((value, index) => (
+            <th key={index}>{value}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {tableBody.map((user, index) => {
+          const columns = [];
+          for (const fieldKey in user) {
+            columns.push(<tr>user[fieldKey]</tr>);
+          }
+          return user;
+        })}
+      </tbody>
+    </Table>
+  );
+};
+
+export default UsersTable;
